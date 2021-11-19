@@ -2,6 +2,8 @@
 
 FROM node:12.18.4-alpine
 
+MAINTAINER zihao
+
 # 设置环境变量
 ENV NODE_ENV=production
 
@@ -14,5 +16,8 @@ COPY ["package.json", "package-lock.json*", "./"]
 RUN npm install --production
 
 COPY . .
+
+# 指定容器内部要暴露的端口
+EXPOSE 3000
 
 CMD [ "node", "index.js" ]
